@@ -18,46 +18,48 @@ class _CalculatePageState extends State<CalculatePage> {
   @override
   Widget build(BuildContext context) {
     //return scaffold: appbar and body
-    return ListView(
-      children: [
-        Text(
-          "Change Calculation",
-          style: TextStyle(
-              fontFamily: "maa",
-              fontSize: 48,
-              fontWeight: FontWeight.bold,
-              fontStyle: FontStyle.italic,
-              color: Colors.deepPurple,
-              backgroundColor: Colors.blue),
-        ),
-        Image.asset(
-          "assets/1.jpg",
-          height: 240,
-        ),
-        Image.network(
-          'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif',
-          height: 120,
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: priceTextField(),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: amountTextField(),
-        ),
-        SizedBox(height: 8),
-        calculateButton(),
-        showTotalText(),
-        SizedBox(height: 8),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: receiveMoneyTextField(),
-        ),
-        SizedBox(height: 8),
-        changeCalculateButton(),
-        showChangeText(),
-      ],
+    return Material(
+      child: ListView(
+        children: [
+          Text(
+            "Change Calculation",
+            style: TextStyle(
+                fontFamily: "maa",
+                fontSize: 48,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.italic,
+                color: Colors.deepPurple,
+                backgroundColor: Colors.blue),
+          ),
+          Image.asset(
+            "assets/1.jpg",
+            height: 240,
+          ),
+          Image.network(
+            'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif',
+            height: 120,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: priceTextField(),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: amountTextField(),
+          ),
+          SizedBox(height: 8),
+          calculateButton(),
+          showTotalText(),
+          SizedBox(height: 8),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: receiveMoneyTextField(),
+          ),
+          SizedBox(height: 8),
+          changeCalculateButton(),
+          showChangeText(),
+        ],
+      ),
     );
   }
 

@@ -1,26 +1,38 @@
 import 'package:flutter/material.dart';
 
-class ContactPage extends StatefulWidget {
-  const ContactPage({Key? key}) : super(key: key);
+class ContactPage extends StatelessWidget {
+  const ContactPage({super.key});
 
-  @override
-  _ContactPageState createState() => _ContactPageState();
-}
-
-class _ContactPageState extends State<ContactPage> {
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        const Center(
-          child: Column(
-            children: [
-              Text("AJ Tui"),
-              Text("@CAMT: Room 414"),
-            ],
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Contact'),
+      ),
+      body: ListView(
+        children: const [
+          ListTile(
+            leading: Icon(Icons.person),
+            title: Text('AJ Tui'),
+            subtitle: Text('Owner'),
+            trailing: Icon(Icons.arrow_forward_ios),
           ),
-        ),
-      ],
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.email),
+            title: Text('Email'),
+            subtitle: Text('pattama@email.com'),
+            trailing: Icon(Icons.arrow_forward_ios),
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.phone),
+            title: Text('Phone'),
+            subtitle: Text('+66 123 456 789'),
+            trailing: Icon(Icons.arrow_forward_ios),
+          ),
+        ],
+      ),
     );
   }
 }

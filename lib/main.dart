@@ -1,7 +1,7 @@
-import 'package:firstapp/pages/cal.dart';
-import 'package:firstapp/pages/contact.dart';
-import 'package:firstapp/pages/home.dart';
 import 'package:flutter/material.dart';
+import 'pages/home.dart';
+import 'pages/cals.dart';
+import 'pages/contact.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,64 +10,57 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Pattama Shop',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          // 修复 dot-shorthands 为标准语法
-          seedColor: const Color.fromARGB(255, 218, 19, 191),
-        ),
-      ),
-      home: const MyHomePage(title: 'Calculate Change'),
+      title: 'Tui shop',
+      debugShowCheckedModeBanner: false,
+      home: const MainPage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+class MainPage extends StatefulWidget {
+  const MainPage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MainPageState extends State<MainPage> {
   int _currentIndex = 0;
-  final tabs = const [
-    // 添加 const 优化
+
+  final List<Widget> _pages = const [
     HomePage(),
-    CalculatePage(),
+    CalPage(),
     ContactPage(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: tabs[_currentIndex], // 修复格式
+      body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
-        items: const [
-          // 添加 const
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.calculate), label: "Calculation"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.contact_page), label: "Contact"),
-        ],
         onTap: (index) {
           setState(() {
-            // print(index);
             _currentIndex = index;
           });
         },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'HomePage',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calculate),
+            label: 'Calculate',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.contact_mail),
+            label: 'Contact',
+          ),
+        ],
       ),
     );
   }

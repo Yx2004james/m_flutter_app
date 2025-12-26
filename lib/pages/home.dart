@@ -1,4 +1,6 @@
-import 'package:firstapp/pages/detail.dart';
+import 'dart:convert';
+
+import 'package:firstapp/pages/details.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -9,12 +11,17 @@ class HomePage extends StatelessWidget {
     String title,
     String subtitle,
     String imageUrl,
+    String detail,
   ) {
+    var v1, v2, v3, v4;
+    v1 = title;
+    v2 = subtitle;
+    v3 = imageUrl;
+    v4 = detail;
     return Container(
+      margin: const EdgeInsets.only(top: 20),
       padding: const EdgeInsets.all(20),
-      height: 150,
       decoration: BoxDecoration(
-        color: Colors.blue[200],
         borderRadius: BorderRadius.circular(20),
         image: DecorationImage(
           image: NetworkImage(imageUrl),
@@ -51,7 +58,7 @@ class HomePage extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const DetailPage(),
+                  builder: (context) => DetailPage(v1, v2, v3, v4),
                 ),
               );
             },
@@ -68,36 +75,28 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Computer Knowledge'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: ListView(
-          children: [
-            MyBox(
-              context,
-              'What is a computer?',
-              'Computer is a things to calculate and do any other works',
-              'https://cdn.pixabay.com/photo/2016/03/26/13/09/workspace-1280538_960_720.jpg',
-            ),
-            const SizedBox(height: 20),
-            MyBox(
-              context,
-              'What is Flutter?',
-              'Flutter is a tool to create a mobile application',
-              'https://cdn.pixabay.com/photo/2023/11/18/18/20/christmas-8396941_1280.png',
-            ),
-            const SizedBox(height: 20),
-            MyBox(
-              context,
-              'What is Dart?',
-              'Dart is the language used in Flutter',
-              'https://cdn.pixabay.com/photo/2024/11/05/11/30/bridge-9175733_1280.jpg',
-            ),
-          ],
+        appBar: AppBar(
+          title: const Text('Computer Knowledge'),
         ),
-      ),
-    );
+        body: Padding(
+            padding: const EdgeInsets.all(20),
+            child: FutureBuilder(
+              builder: (context, snapshot) {
+                var data = json.decode(snapshot.data.toString());
+                return ListView.builder(
+                  itemBuilder: (BuildContext context, int index) {
+                    return MyBox(
+                        context,
+                        data[index]['title'],
+                        data[index]['subtitle'],
+                        data[index]['image_url'],
+                        data[index]['detail']);
+                  },
+                  itemCount: data.length,
+                );
+              },
+              future:
+                  DefaultAssetBundle.of(context).loadString('assets/data.json'),
+            )));
   }
 }

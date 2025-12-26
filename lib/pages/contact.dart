@@ -13,7 +13,7 @@ class ContactPage extends StatelessWidget {
         children: const [
           ListTile(
             leading: Icon(Icons.person),
-            title: Text('AJ Tui'),
+            title: Text('Yang'),
             subtitle: Text('Owner'),
             trailing: Icon(Icons.arrow_forward_ios),
           ),
@@ -21,7 +21,7 @@ class ContactPage extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.email),
             title: Text('Email'),
-            subtitle: Text('pattama@email.com'),
+            subtitle: Text('Yang@email.com'),
             trailing: Icon(Icons.arrow_forward_ios),
           ),
           Divider(),

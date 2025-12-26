@@ -1,0 +1,20 @@
+[
+    {
+        "title": "What is a computer?",
+        "subtitle": "Computer is a things to calculate and do any other works",
+        "image_url": "https://cdn.pixabay.com/photo/2016/03/26/13/09/workspace-1280538_960_720.jpg",
+        "detail": "A computer is an electronic device that can calculate, process data, and perform many tasks.\nIt can be used for study, work, communication, and entertainment."
+    },
+    {
+        "title": "What is Flutter?",
+        "subtitle": "Flutter is a tool to create a mobile application",
+        "image_url": "https://cdn.pixabay.com/photo/2023/11/18/18/20/christmas-8396941_1280.png",
+        "detail":"Flutter is a UI framework developed by Google.\nIt is used to build mobile applications for Android and iOS using one codebase."
+    },
+    {
+        "title": "What is Dart?",
+        "subtitle": "Dart is the language used in Flutter",
+        "image_url": "https://cdn.pixabay.com/photo/2024/11/05/11/30/bridge-9175733_1280.jpg",
+        "detail":"Dart is a programming language created by Google.\nIt is mainly used with Flutter to develop fast and modern applications."
+    }
+]

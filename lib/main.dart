@@ -4,6 +4,7 @@ import 'pages/cals.dart';
 import 'pages/contact.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -32,7 +33,7 @@ class _MainPageState extends State<MainPage> {
 
   final List<Widget> _pages = const [
     HomePage(),
-    CalPage(),
+    CalPage(), // ⭐ WebView 作业写在这里
     ContactPage(),
   ];
 

@@ -13,6 +13,7 @@ dependencies:
     sdk: flutter
   flutter_launcher_icons: ^0.14.4
   cupertino_icons: ^1.0.6
+  webview_flutter: ^4.10.0
 
 dev_dependencies:
   flutter_test:
@@ -25,6 +26,8 @@ flutter:
   assets:
     - assets/data.json
     - assets/1.jpg
+    - assets/index.html
+    - assets/challenge_webview.html
 
   fonts:
     - family: maa

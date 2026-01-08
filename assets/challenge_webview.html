@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WebView JS Example</title>
+    <style>
+        body { font-family: Arial; padding: 16px; }
+        h2 { margin: 0 0 12px; }
+        .item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; }
+        .btn { padding: 6px 12px; border: 1px solid #ddd; border-radius: 8px; background: #f7f7f7; cursor: pointer; }
+        .cart { margin-top: 16px; }
+        #total { font-size: 20px; font-weight: bold; margin-top: 8px; }
+        .wide { margin-top: 12px; width: 100%; padding: 12px; border-radius: 10px; border: none; background: #eaeaea; font-size: 16px; cursor: pointer; }
+    </style>
+</head>
+<body>
+<h2>My Cart</h2>
+
+<div class="item"><span>Apple - $30</span><button class="btn" onclick="addItem(30)">Add</button></div>
+<div class="item"><span>Banana - $20</span><button class="btn" onclick="addItem(20)">Add</button></div>
+<div class="item"><span>Orange - $25</span><button class="btn" onclick="addItem(25)">Add</button></div>
+<div class="item"><span>Milk - $45</span><button class="btn" onclick="addItem(45)">Add</button></div>
+<div class="item"><span>Bread - $35</span><button class="btn" onclick="addItem(35)">Add</button></div>
+
+<div class="cart">
+    <h3>Cart</h3>
+    <div>Total:</div>
+    <div id="total">$0</div>
+
+    <!-- ✅ Step2: JS -> Flutter (PDF: FlutterChannel) -->
+    <button class="wide" onclick="sendTotalToFlutter()">Send total to Flutter</button>
+</div>
+
+<script>
+    let total = 0;
+
+    function addItem(price) {
+      total += price;
+      document.getElementById('total').innerText = '$' + total;
+    }
+
+    // ✅ PDF Workshop: JS -> Flutter : FlutterChannel.postMessage(totalText)
+    function sendTotalToFlutter() {
+      var totalText = document.getElementById('total').innerText; // like "$120"
+      if (window.FlutterChannel && FlutterChannel.postMessage) {
+        FlutterChannel.postMessage(totalText);
+      } else {
+        alert("FlutterChannel not found (run inside Flutter WebView)");
+      }
+    }
+
+    // ✅ Step3: Flutter -> JS (PDF: updateTotalFromFlutter)
+    function updateTotalFromFlutter(newTotal) {
+      total = newTotal;
+      document.getElementById('total').innerText = '$' + total;
+      return "Updated total: $" + total;
+    }
+</script>
+</body>
+</html>
